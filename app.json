@@ -1,0 +1,40 @@
+{
+  "expo": {
+    "name": "Career Trial",
+    "slug": "career-trial",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#1A1B2E"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.careertrial.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#1A1B2E"
+      },
+      "package": "com.careertrial.app"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro",
+      "output": "single",
+      "name": "Career Trial",
+      "shortName": "Career Trial",
+      "themeColor": "#6C63FF",
+      "backgroundColor": "#0F1023",
+      "description": "Try before you choose — AI-powered career trials for students."
+    },
+    "plugins": [
+      "expo-notifications"
+    ]
+  }
+}
