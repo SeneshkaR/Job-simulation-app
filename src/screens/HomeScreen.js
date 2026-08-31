@@ -10,7 +10,11 @@ import { careers } from '../data/careers';
 export default function HomeScreen({ navigation }) {
   const { state } = useApp();
   const name = state.user.name || 'Explorer';
+  const ageGroup = state.user.ageGroup;
   const featuredCareers = careers.slice(0, 4);
+  const subtitle = ageGroup === 'young-adult'
+    ? 'Compare paths and plan your next step'
+    : 'Explore careers and find what excites you';
   const completedCount = state.user.completedTrials.length;
 
   return (
@@ -20,7 +24,7 @@ export default function HomeScreen({ navigation }) {
         <View style={styles.header}>
           <View style={{ flex: 1 }}>
             <Text style={styles.greeting}>Hey {name} 👋</Text>
-            <Text style={styles.subGreeting}>Ready to explore a career today?</Text>
+            <Text style={styles.subGreeting}>{subtitle}</Text>
           </View>
           <TouchableOpacity style={styles.avatarButton}>
             <LinearGradient colors={colors.gradientPrimary} style={styles.avatar}>

@@ -12,6 +12,7 @@ export default function CareerDetailScreen({ route, navigation }) {
   const career = getCareerById(careerId);
   const { addToComparison, state } = useApp();
   const inComparison = state.comparisons.find(c => c.careerId === careerId);
+  const ageGroup = state.user.ageGroup;
 
   if (!career) return null;
   const grad = careerColors[career.id]?.gradient || colors.gradientPrimary;
@@ -47,6 +48,8 @@ export default function CareerDetailScreen({ route, navigation }) {
         <Section title="About this Career">
           <Text style={styles.paragraph}>{career.description}</Text>
         </Section>
+
+        <GuidanceSection ageGroup={ageGroup} career={career} />
 
         <Section title="Work Style">
           <View style={styles.chipRow}>
@@ -145,6 +148,35 @@ function TrialCard({ icon, title, subtitle, gradient, onPress }) {
   );
 }
 
+function GuidanceSection({ ageGroup, career }) {
+  const grad = careerColors[career.id]?.gradient || colors.gradientPrimary;
+  if (ageGroup === 'young-adult') {
+    return (
+      <Section title="For Young Adults (18–24)">
+        <LinearGradient colors={grad} style={styles.guidanceCard}>
+          <View style={styles.guidanceHeader}>
+            <Ionicons name="school-outline" size={20} color="#fff" />
+            <Text style={styles.guidanceLabel}>Choosing Majors or First Jobs</Text>
+          </View>
+          <Text style={styles.guidanceText}>{career.guidance.youngAdult}</Text>
+        </LinearGradient>
+      </Section>
+    );
+  }
+  // Default to teen view (also used when no age group is selected yet)
+  return (
+    <Section title="For Teens (13–17)">
+      <LinearGradient colors={grad} style={styles.guidanceCard}>
+        <View style={styles.guidanceHeader}>
+          <Ionicons name="compass-outline" size={20} color="#fff" />
+          <Text style={styles.guidanceLabel}>Exploring Career Paths</Text>
+        </View>
+        <Text style={styles.guidanceText}>{career.guidance.teen}</Text>
+      </LinearGradient>
+    </Section>
+  );
+}
+
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: colors.background },
   hero: { paddingBottom: spacing.xxl, paddingHorizontal: spacing.xxl, borderBottomLeftRadius: 30, borderBottomRightRadius: 30, paddingTop: Platform.OS === 'web' ? 8 : 0 },
@@ -172,6 +204,10 @@ const styles = StyleSheet.create({
   trialIconWrap: { width: 44, height: 44, borderRadius: 22, backgroundColor: 'rgba(255,255,255,0.2)', alignItems: 'center', justifyContent: 'center' },
   trialTitle: { color: '#fff', fontSize: typography.body, fontWeight: typography.bold },
   trialSubtitle: { color: 'rgba(255,255,255,0.85)', fontSize: typography.caption, marginTop: 2 },
+  guidanceCard: { padding: spacing.lg, borderRadius: borderRadius.lg, ...shadows.small },
+  guidanceHeader: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm, marginBottom: spacing.sm },
+  guidanceLabel: { color: '#fff', fontSize: typography.caption, fontWeight: typography.bold, textTransform: 'uppercase', letterSpacing: 1 },
+  guidanceText: { color: 'rgba(255,255,255,0.95)', fontSize: typography.bodySmall, lineHeight: 22 },
   bottomBar: { position: 'absolute', left: 0, right: 0, bottom: 0, paddingHorizontal: spacing.lg, paddingVertical: spacing.md, paddingBottom: Platform.OS === 'web' ? 16 : 30, backgroundColor: colors.surface, borderTopWidth: 1, borderTopColor: colors.border, flexDirection: 'row', gap: spacing.sm },
   chatBtn: { flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 6, paddingVertical: spacing.md, backgroundColor: colors.card, borderRadius: borderRadius.md, borderWidth: 1, borderColor: colors.border },
   chatBtnText: { color: colors.textPrimary, fontWeight: typography.semibold, fontSize: typography.bodySmall },

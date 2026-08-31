@@ -13,32 +13,30 @@ export default function CompareScreen({ navigation }) {
 
   if (items.length === 0) {
     return (
-      <View style={styles.container}>
-        <SafeAreaView style={styles.emptyWrap}>
-          <View style={styles.emptyIconWrap}>
-            <Ionicons name="git-compare" size={44} color={colors.primary} />
-          </View>
-          <Text style={styles.emptyTitle}>Compare Careers Side by Side</Text>
-          <Text style={styles.emptyDesc}>
-            Bookmark careers you're curious about to compare salary, education, demand, and your scores.
-          </Text>
+      <ScrollView style={styles.container} contentContainerStyle={styles.emptyWrap} showsVerticalScrollIndicator={false}>
+        <View style={styles.emptyIconWrap}>
+          <Ionicons name="git-compare" size={44} color={colors.primary} />
+        </View>
+        <Text style={styles.emptyTitle}>Compare Careers Side by Side</Text>
+        <Text style={styles.emptyDesc}>
+          Bookmark careers you're curious about to compare salary, education, demand, and your scores.
+        </Text>
 
-          <Text style={styles.suggestLabel}>QUICK ADD</Text>
-          <View style={styles.suggestGrid}>
-            {careers.slice(0, 6).map(c => (
-              <TouchableOpacity
-                key={c.id}
-                onPress={() => addToComparison({ careerId: c.id, title: c.title, emoji: c.emoji })}
-                activeOpacity={0.85}
-                style={styles.suggestChip}
-              >
-                <Text style={{ fontSize: 22 }}>{c.emoji}</Text>
-                <Text style={styles.suggestText} numberOfLines={1}>{c.title}</Text>
-              </TouchableOpacity>
-            ))}
-          </View>
-        </SafeAreaView>
-      </View>
+        <Text style={styles.suggestLabel}>QUICK ADD</Text>
+        <View style={styles.suggestGrid}>
+          {careers.map(c => (
+            <TouchableOpacity
+              key={c.id}
+              onPress={() => addToComparison({ careerId: c.id, title: c.title, emoji: c.emoji })}
+              activeOpacity={0.85}
+              style={styles.suggestChip}
+            >
+              <Text style={{ fontSize: 22 }}>{c.emoji}</Text>
+              <Text style={styles.suggestText} numberOfLines={1}>{c.title}</Text>
+            </TouchableOpacity>
+          ))}
+        </View>
+      </ScrollView>
     );
   }
 

@@ -24,3 +24,7 @@ Thumbs.db
 
 # Qoder
 .qoder/
+
+# Career data build artifacts
+build_careers.py
+careers_pdf.txt
