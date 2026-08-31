@@ -32,7 +32,7 @@ export default function WelcomeScreen({ navigation }) {
           </LinearGradient>
         </TouchableOpacity>
 
-        <Text style={styles.footerText}>Explore 10+ careers with real scenarios</Text>
+        <Text style={styles.footerText}>Explore 50+ careers with real scenarios</Text>
       </ScrollView>
     </LinearGradient>
   );

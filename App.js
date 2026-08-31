@@ -63,7 +63,7 @@ function WebFrame({ children }) {
         <View style={styles.brandBlock}>
           <div style={brandStyle.title}>Career Trial</div>
           <div style={brandStyle.tagline}>
-            Try before you choose. Live a real workday as 10 different professionals.
+            Try before you choose. Live a real workday as 50 different professionals.
           </div>
           <div style={brandStyle.small}>Tip: resize your browser or open on mobile for the full experience.</div>
         </View>
