@@ -5,7 +5,9 @@ const AppContext = createContext();
 const initialState = {
   user: {
     name: '',
-    ageGroup: null, // 'teen' (13-17) | 'young-adult' (18-24)
+    age: null,
+    email: '',
+    ageGroup: null, // 'teen' (13-17) | 'young-adult' (18-24) | 'adult' (25+)
     interests: [],
     completedTrials: [],
     currentTrial: null,

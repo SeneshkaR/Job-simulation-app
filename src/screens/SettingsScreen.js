@@ -34,8 +34,9 @@ export default function SettingsScreen({ navigation }) {
           <View style={{ flex: 1 }}>
             <Text style={styles.profileName}>{state.user.name || 'Explorer'}</Text>
             <Text style={styles.profileMeta}>
-              {state.user.ageGroup === 'teen' ? 'Teen (13-17)' : state.user.ageGroup === 'young-adult' ? 'Young Adult (18-24)' : 'Age group not set'}
+              {state.user.age ? `Age ${state.user.age} · ` : ''}{state.user.ageGroup === 'teen' ? 'Teen (13-17)' : state.user.ageGroup === 'young-adult' ? 'Young Adult (18-24)' : state.user.ageGroup === 'adult' ? 'Adult (25+)' : 'Age group not set'}
             </Text>
+            {state.user.email ? <Text style={styles.profileMeta}>{state.user.email}</Text> : null}
             <Text style={styles.profileMeta}>{state.user.completedTrials.length} trials completed</Text>
           </View>
           <TouchableOpacity onPress={() => navigation.navigate('Onboarding')}>
