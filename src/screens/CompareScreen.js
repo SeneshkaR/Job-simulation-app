@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, SafeAreaView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, SafeAreaView, Platform } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 import { colors, careerColors } from '../theme/colors';
@@ -134,7 +134,7 @@ function Row({ label, value, highlight }) {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: colors.background },
-  header: { paddingHorizontal: spacing.xxl, paddingTop: spacing.lg, paddingBottom: spacing.sm },
+  header: { paddingHorizontal: spacing.xxl, paddingTop: Platform.OS === 'web' ? 16 : spacing.lg, paddingBottom: spacing.sm },
   headerTitle: { color: colors.textPrimary, fontSize: typography.hero, fontWeight: typography.heavy },
   headerSub: { color: colors.textSecondary, fontSize: typography.body, marginTop: 2 },
   cardScroll: { paddingHorizontal: spacing.lg, paddingVertical: spacing.md, gap: spacing.md },
@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
   legendCard: { margin: spacing.lg, padding: spacing.lg, backgroundColor: colors.card, borderRadius: borderRadius.md, borderWidth: 1, borderColor: colors.border },
   legendTitle: { color: colors.textPrimary, fontSize: typography.body, fontWeight: typography.bold },
   legendText: { color: colors.textSecondary, fontSize: typography.bodySmall, marginTop: spacing.sm, lineHeight: 20 },
-  emptyWrap: { flex: 1, alignItems: 'center', paddingHorizontal: spacing.xxl, paddingTop: spacing.huge },
+  emptyWrap: { flex: 1, alignItems: 'center', paddingHorizontal: spacing.xxl, paddingTop: Platform.OS === 'web' ? 24 : spacing.huge },
   emptyIconWrap: { width: 80, height: 80, borderRadius: 40, backgroundColor: `${colors.primary}22`, alignItems: 'center', justifyContent: 'center' },
   emptyTitle: { color: colors.textPrimary, fontSize: typography.h2, fontWeight: typography.bold, marginTop: spacing.lg, textAlign: 'center' },
   emptyDesc: { color: colors.textSecondary, fontSize: typography.body, textAlign: 'center', marginTop: spacing.sm, lineHeight: 22 },

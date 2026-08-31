@@ -1,4 +1,5 @@
 import React from 'react';
+import { Platform } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -42,8 +43,8 @@ function MainTabs() {
           backgroundColor: colors.surface,
           borderTopColor: colors.border,
           borderTopWidth: 1,
-          height: 85,
-          paddingBottom: 20,
+          height: Platform.OS === 'web' ? 60 : 85,
+          paddingBottom: Platform.OS === 'web' ? 6 : 20,
           paddingTop: 10,
         },
         tabBarLabelStyle: {

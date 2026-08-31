@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, SafeAreaView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, SafeAreaView, Platform } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 import { colors, careerColors } from '../theme/colors';
@@ -147,7 +147,7 @@ function TrialCard({ icon, title, subtitle, gradient, onPress }) {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: colors.background },
-  hero: { paddingBottom: spacing.xxl, paddingHorizontal: spacing.xxl, borderBottomLeftRadius: 30, borderBottomRightRadius: 30 },
+  hero: { paddingBottom: spacing.xxl, paddingHorizontal: spacing.xxl, borderBottomLeftRadius: 30, borderBottomRightRadius: 30, paddingTop: Platform.OS === 'web' ? 8 : 0 },
   headerRow: { flexDirection: 'row', justifyContent: 'space-between', marginTop: 10 },
   iconBtn: { width: 40, height: 40, borderRadius: 20, backgroundColor: 'rgba(255,255,255,0.2)', alignItems: 'center', justifyContent: 'center' },
   emoji: { fontSize: 64, marginTop: spacing.md, textAlign: 'center' },
@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
   trialIconWrap: { width: 44, height: 44, borderRadius: 22, backgroundColor: 'rgba(255,255,255,0.2)', alignItems: 'center', justifyContent: 'center' },
   trialTitle: { color: '#fff', fontSize: typography.body, fontWeight: typography.bold },
   trialSubtitle: { color: 'rgba(255,255,255,0.85)', fontSize: typography.caption, marginTop: 2 },
-  bottomBar: { position: 'absolute', left: 0, right: 0, bottom: 0, paddingHorizontal: spacing.lg, paddingVertical: spacing.md, paddingBottom: 30, backgroundColor: colors.surface, borderTopWidth: 1, borderTopColor: colors.border, flexDirection: 'row', gap: spacing.sm },
+  bottomBar: { position: 'absolute', left: 0, right: 0, bottom: 0, paddingHorizontal: spacing.lg, paddingVertical: spacing.md, paddingBottom: Platform.OS === 'web' ? 16 : 30, backgroundColor: colors.surface, borderTopWidth: 1, borderTopColor: colors.border, flexDirection: 'row', gap: spacing.sm },
   chatBtn: { flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 6, paddingVertical: spacing.md, backgroundColor: colors.card, borderRadius: borderRadius.md, borderWidth: 1, borderColor: colors.border },
   chatBtnText: { color: colors.textPrimary, fontWeight: typography.semibold, fontSize: typography.bodySmall },
   primaryBtn: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: spacing.sm, paddingVertical: spacing.md, borderRadius: borderRadius.md, ...shadows.medium },

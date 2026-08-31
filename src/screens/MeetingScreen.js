@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView, SafeAreaView, Animated } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, SafeAreaView, Animated, Platform } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 import { colors, careerColors } from '../theme/colors';
@@ -217,7 +217,7 @@ const styles = StyleSheet.create({
   capName: { color: colors.primary, fontSize: typography.bodySmall, fontWeight: typography.bold },
   capText: { color: colors.textPrimary, fontSize: typography.bodySmall, flex: 1, lineHeight: 20 },
   emptyCap: { color: colors.textMuted, fontSize: typography.caption, fontStyle: 'italic' },
-  controls: { flexDirection: 'row', gap: spacing.md, justifyContent: 'center', paddingVertical: spacing.lg, paddingBottom: 30, marginTop: 'auto' },
+  controls: { flexDirection: 'row', gap: spacing.md, justifyContent: 'center', paddingVertical: spacing.lg, paddingBottom: Platform.OS === 'web' ? 16 : 30, marginTop: 'auto' },
   ctrlBtn: { width: 56, height: 56, borderRadius: 28, backgroundColor: colors.surfaceLight, alignItems: 'center', justifyContent: 'center' },
   leaveBtn: { width: 56, height: 56, borderRadius: 28, backgroundColor: colors.error, alignItems: 'center', justifyContent: 'center', ...shadows.medium },
 });

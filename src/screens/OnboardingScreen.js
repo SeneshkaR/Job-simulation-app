@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView, Platform } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 import { colors } from '../theme/colors';
@@ -134,7 +134,7 @@ export default function OnboardingScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, paddingTop: 60, paddingHorizontal: spacing.xxl, paddingBottom: 40 },
+  container: { flex: 1, paddingTop: Platform.OS === 'web' ? 24 : 60, paddingHorizontal: spacing.xxl, paddingBottom: 40 },
   header: { flexDirection: 'row', alignItems: 'center', gap: spacing.lg, marginBottom: spacing.xxl },
   progressBar: { flex: 1, flexDirection: 'row', gap: spacing.sm },
   progressDot: { flex: 1, height: 4, borderRadius: 2, backgroundColor: colors.border },

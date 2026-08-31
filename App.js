@@ -16,7 +16,7 @@ export default function App() {
     document.title = 'Career Trial — Try Before You Choose';
     document.body.style.margin = '0';
     document.body.style.background = 'linear-gradient(135deg, #0A0B18 0%, #1A1B2E 100%)';
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = 'auto';
     document.documentElement.style.height = '100%';
     document.body.style.height = '100%';
     document.body.style.fontFamily =
@@ -51,6 +51,7 @@ function WebFrame({ children }) {
   }, []);
 
   const compact = dims.width < 640;
+  const shortScreen = dims.height < 500;
 
   if (compact) {
     return <View style={styles.fullBleed}>{children}</View>;
@@ -58,14 +59,16 @@ function WebFrame({ children }) {
 
   return (
     <View style={styles.desktopWrap}>
-      <View style={styles.brandBlock}>
-        <div style={brandStyle.title}>Career Trial</div>
-        <div style={brandStyle.tagline}>
-          Try before you choose. Live a real workday as 10 different professionals.
-        </div>
-        <div style={brandStyle.small}>Tip: resize your browser or open on mobile for the full experience.</div>
-      </View>
-      <View style={styles.frame}>
+      {!shortScreen && (
+        <View style={styles.brandBlock}>
+          <div style={brandStyle.title}>Career Trial</div>
+          <div style={brandStyle.tagline}>
+            Try before you choose. Live a real workday as 10 different professionals.
+          </div>
+          <div style={brandStyle.small}>Tip: resize your browser or open on mobile for the full experience.</div>
+        </View>
+      )}
+      <View style={[styles.frame, shortScreen && { height: Math.min(820, dims.height * 0.92) }]}>
         <View style={styles.notch} />
         <View style={styles.screen}>{children}</View>
       </View>
@@ -74,21 +77,21 @@ function WebFrame({ children }) {
 }
 
 const styles = StyleSheet.create({
-  fullBleed: { flex: 1, height: '100vh', width: '100vw' },
+  fullBleed: { flex: 1, minHeight: '100vh', width: '100%' },
   desktopWrap: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     gap: 60,
-    height: '100vh',
-    width: '100vw',
+    minHeight: '100vh',
+    width: '100%',
     padding: 20,
   },
   brandBlock: { maxWidth: 380 },
   frame: {
     width: 400,
     height: 820,
-    maxHeight: '95vh',
+    maxHeight: '92vh',
     borderRadius: 44,
     backgroundColor: '#0F1023',
     borderWidth: 8,

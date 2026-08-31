@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView, SafeAreaView, Animated } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, SafeAreaView, Animated, Platform } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 import { colors, careerColors } from '../../theme/colors';
@@ -244,7 +244,7 @@ const styles = StyleSheet.create({
   meterBar: { flex: 1, height: 6, backgroundColor: colors.card, borderRadius: 3, overflow: 'hidden' },
   meterFill: { height: '100%' },
   progressLabel: { color: colors.textMuted, fontSize: typography.tiny, textAlign: 'center' },
-  body: { padding: spacing.xxl, paddingBottom: 60 },
+  body: { padding: spacing.xxl, paddingBottom: Platform.OS === 'web' ? 30 : 60 },
   introHero: { paddingVertical: spacing.xxxl, borderRadius: borderRadius.xl, alignItems: 'center' },
   introEmoji: { fontSize: 72 },
   introHead: { color: '#fff', fontSize: typography.h1, fontWeight: typography.bold, marginTop: spacing.md },

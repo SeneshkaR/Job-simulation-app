@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, FlatList } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, FlatList, Platform } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 import { colors, careerColors } from '../theme/colors';
@@ -138,7 +138,7 @@ function QuickAction({ icon, label, gradient, onPress }) {
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  scroll: { paddingTop: 60, paddingHorizontal: spacing.xxl, paddingBottom: 30 },
+  scroll: { paddingTop: Platform.OS === 'web' ? 24 : 60, paddingHorizontal: spacing.xxl, paddingBottom: 30 },
   header: { flexDirection: 'row', alignItems: 'center', marginBottom: spacing.xxl },
   greeting: { fontSize: typography.h1, fontWeight: typography.bold, color: colors.textPrimary },
   subGreeting: { fontSize: typography.body, color: colors.textSecondary, marginTop: 4 },

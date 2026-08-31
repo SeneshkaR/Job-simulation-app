@@ -180,7 +180,7 @@ const styles = StyleSheet.create({
   typingAvatar: { fontSize: 20 },
   typingBubble: { flexDirection: 'row', alignItems: 'center', gap: 8, backgroundColor: colors.card, paddingHorizontal: spacing.md, paddingVertical: 8, borderRadius: borderRadius.md, borderWidth: 1, borderColor: colors.border },
   typingText: { color: colors.textSecondary, fontSize: typography.caption },
-  inputBar: { flexDirection: 'row', alignItems: 'flex-end', gap: spacing.sm, paddingHorizontal: spacing.lg, paddingVertical: spacing.md, paddingBottom: 30, backgroundColor: colors.surface, borderTopWidth: 1, borderTopColor: colors.border },
+  inputBar: { flexDirection: 'row', alignItems: 'flex-end', gap: spacing.sm, paddingHorizontal: spacing.lg, paddingVertical: spacing.md, paddingBottom: Platform.OS === 'web' ? 12 : 30, backgroundColor: colors.surface, borderTopWidth: 1, borderTopColor: colors.border },
   input: { flex: 1, backgroundColor: colors.card, borderRadius: borderRadius.lg, paddingHorizontal: spacing.md, paddingVertical: Platform.OS === 'ios' ? 12 : 8, color: colors.textPrimary, fontSize: typography.bodySmall, maxHeight: 100, borderWidth: 1, borderColor: colors.border },
   sendBtn: { width: 44, height: 44, borderRadius: 22, alignItems: 'center', justifyContent: 'center', ...shadows.medium },
 });

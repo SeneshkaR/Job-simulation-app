@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, FlatList, TouchableOpacity, ScrollView, TextInput } from 'react-native';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity, ScrollView, TextInput, Platform } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 import { colors, careerColors } from '../theme/colors';
@@ -92,7 +92,7 @@ function CategoryChip({ label, active, onPress }) {
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  header: { paddingTop: 60, paddingHorizontal: spacing.xxl, marginBottom: spacing.lg },
+  header: { paddingTop: Platform.OS === 'web' ? 24 : 60, paddingHorizontal: spacing.xxl, marginBottom: spacing.lg },
   title: { fontSize: typography.h1, fontWeight: typography.bold, color: colors.textPrimary },
   subtitle: { color: colors.textSecondary, fontSize: typography.body, marginTop: 4 },
   searchContainer: { flexDirection: 'row', alignItems: 'center', backgroundColor: colors.card, marginHorizontal: spacing.xxl, borderRadius: borderRadius.lg, paddingHorizontal: spacing.lg, borderWidth: 1, borderColor: colors.border, gap: spacing.md },

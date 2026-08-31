@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView, SafeAreaView, ActivityIndicator } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, SafeAreaView, ActivityIndicator, Platform } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 import { colors, careerColors } from '../theme/colors';
@@ -183,8 +183,8 @@ const styles = StyleSheet.create({
   heroTopRow: { flexDirection: 'row', justifyContent: 'space-between', paddingTop: 10 },
   iconBtn: { width: 40, height: 40, borderRadius: 20, backgroundColor: 'rgba(255,255,255,0.22)', alignItems: 'center', justifyContent: 'center' },
   heroLabel: { color: 'rgba(255,255,255,0.85)', fontSize: typography.caption, fontWeight: typography.bold, letterSpacing: 1.5, textAlign: 'center', marginTop: spacing.md },
-  circle: { alignSelf: 'center', width: 180, height: 180, borderRadius: 90, backgroundColor: 'rgba(255,255,255,0.15)', borderWidth: 4, borderColor: 'rgba(255,255,255,0.4)', alignItems: 'center', justifyContent: 'center', marginTop: spacing.lg },
-  circleScore: { color: '#fff', fontSize: 68, fontWeight: typography.heavy },
+  circle: { alignSelf: 'center', width: Platform.OS === 'web' ? 140 : 180, height: Platform.OS === 'web' ? 140 : 180, borderRadius: Platform.OS === 'web' ? 70 : 90, backgroundColor: 'rgba(255,255,255,0.15)', borderWidth: 4, borderColor: 'rgba(255,255,255,0.4)', alignItems: 'center', justifyContent: 'center', marginTop: spacing.lg },
+  circleScore: { color: '#fff', fontSize: Platform.OS === 'web' ? 52 : 68, fontWeight: typography.heavy },
   circleOver: { color: 'rgba(255,255,255,0.85)', fontSize: typography.body },
   heroTitle: { color: '#fff', fontSize: typography.h1, fontWeight: typography.bold, textAlign: 'center', marginTop: spacing.md },
   body: { padding: spacing.xxl },

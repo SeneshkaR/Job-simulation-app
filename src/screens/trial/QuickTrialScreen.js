@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView, SafeAreaView, Animated } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, SafeAreaView, Animated, Platform } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 import { colors, careerColors } from '../../theme/colors';
@@ -361,7 +361,7 @@ const styles = StyleSheet.create({
   progressBg: { flex: 1, height: 6, backgroundColor: colors.card, borderRadius: 3, overflow: 'hidden' },
   progressFill: { height: '100%', borderRadius: 3 },
   stepText: { color: colors.textSecondary, fontSize: typography.caption, fontWeight: typography.semibold, width: 40, textAlign: 'right' },
-  body: { paddingVertical: spacing.xl, paddingBottom: 60 },
+  body: { paddingVertical: spacing.xl, paddingBottom: Platform.OS === 'web' ? 30 : 60 },
   introHero: { paddingVertical: spacing.xxxl, borderRadius: borderRadius.xl, alignItems: 'center', ...shadows.medium },
   introEmoji: { fontSize: 72 },
   introTitle: { color: '#fff', fontSize: typography.h2, fontWeight: typography.bold, marginTop: spacing.md },
@@ -402,8 +402,8 @@ const styles = StyleSheet.create({
   optText: { color: colors.textPrimary, fontSize: typography.bodySmall, lineHeight: 20 },
   optFeedback: { color: colors.textSecondary, fontSize: typography.caption, marginTop: 4, fontStyle: 'italic' },
   optScore: { color: colors.accentGreen, fontWeight: typography.bold, fontSize: typography.body },
-  summaryCircle: { width: 160, height: 160, borderRadius: 80, alignItems: 'center', justifyContent: 'center', ...shadows.large, marginTop: spacing.xl },
-  summaryScore: { color: '#fff', fontSize: 56, fontWeight: typography.heavy },
+  summaryCircle: { width: Platform.OS === 'web' ? 130 : 160, height: Platform.OS === 'web' ? 130 : 160, borderRadius: Platform.OS === 'web' ? 65 : 80, alignItems: 'center', justifyContent: 'center', ...shadows.large, marginTop: spacing.xl },
+  summaryScore: { color: '#fff', fontSize: Platform.OS === 'web' ? 44 : 56, fontWeight: typography.heavy },
   summarySubscore: { color: 'rgba(255,255,255,0.85)', fontSize: typography.body },
   summaryTitle: { color: colors.textPrimary, fontSize: typography.h2, fontWeight: typography.bold, marginTop: spacing.xl },
   summaryDesc: { color: colors.textSecondary, fontSize: typography.body, textAlign: 'center', marginTop: spacing.sm },
