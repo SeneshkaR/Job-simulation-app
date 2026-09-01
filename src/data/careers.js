@@ -1,3 +1,5 @@
+import { applyCareerCorrections } from './careerCorrections';
+
 export const careers = [
 {
   "id": "software-engineer",
@@ -8481,6 +8483,8 @@ export const careers = [
   }
 },
 ];
+
+applyCareerCorrections(careers);
 
 export function getCareerById(id) {
   return careers.find(c => c.id === id);

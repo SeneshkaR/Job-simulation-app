@@ -1,10 +1,10 @@
 # Career Trial — Try Before You Choose
 
-An AI-powered **web application** (also runs as a mobile app) that lets students actually experience 10 real careers before committing years and money to them. Built with Expo + React Native Web so one codebase ships to Web, iOS, and Android.
+An AI-powered **web application** (also runs as a mobile app) that lets students actually experience **50 real careers** before committing years and money to them. Built with Expo + React Native Web so one codebase ships to Web, iOS, and Android.
 
 ## What it is
 
-Instead of reading Wikipedia articles about jobs, students **live one workday** or **survive a full workweek** as a nurse, software engineer, lawyer, etc. AI colleagues chat with them, meetings pop up, deadlines hit, and stress builds — just like the real thing.
+Instead of reading Wikipedia articles about jobs, students **live one workday** or **survive a full workweek** as a nurse, software engineer, lawyer, pilot, electrician, and many more. AI colleagues chat with them, meetings pop up, deadlines hit, and stress builds — just like the real thing.
 
 ## Features
 
@@ -19,8 +19,34 @@ Every career has 2-3 personas (senior developer, charge nurse, etc.) with distin
 ### AI-scored performance
 Your decisions are scored across 5 dimensions: Technical Skills, Decision Making, Communication, Problem Solving, Career Fit. Includes personalized strengths + growth areas.
 
-### 10 careers covered
-Software Engineer, Registered Nurse, Civil Engineer, Digital Marketer, Teacher, Lawyer, Accountant, Data Scientist, Psychologist, Architect.
+### 50 careers covered across 14 categories
+**Technology:** Software Engineer, Data Scientist, Cybersecurity Analyst, Cloud Engineer, Game Developer, AI/ML Engineer
+
+**Healthcare:** Registered Nurse, Pharmacist, Physical Therapist, Dentist, Veterinarian, Physical Therapist Assistant
+
+**Engineering:** Civil Engineer
+
+**Business:** Digital Marketer, Accountant, Financial Analyst, Human Resources Manager, Product Manager, Management Consultant, Supply Chain Analyst, E-commerce Entrepreneur, Public Relations Specialist, Real Estate Agent
+
+**Education:** Teacher, School Counselor
+
+**Law:** Lawyer
+
+**Design:** UX/UI Designer, Graphic Designer, Architect
+
+**Science:** Psychologist, Biomedical Scientist, Environmental Scientist, Meteorologist
+
+**Trades:** Electrician, Plumber, HVAC Technician, Welder
+
+**Creative:** Video Editor, Journalist, Musician/Composer, Content Creator/YouTuber
+
+**Public Service:** Police Officer, Firefighter, Social Worker, Diplomat/Foreign Service Officer
+
+**Hospitality:** Chef, Hotel Manager
+
+**Sports & Wellness:** Personal Trainer, Athletic Trainer/Coach
+
+**Transportation:** Airline Pilot
 
 ## Running as a web application
 
@@ -28,7 +54,6 @@ Software Engineer, Registered Nurse, Civil Engineer, Digital Marketer, Teacher, 
 cd "D:\job simulation ai"
 npm install
 npm run web
-```
 
 Then open the URL that appears in the terminal (usually http://localhost:8081 or http://localhost:19006). On desktop the app displays inside a centered phone frame with brand messaging; on narrow browsers or mobile it goes full-bleed like a native app.
 
