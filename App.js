@@ -1,0 +1,148 @@
+import React, { useEffect } from 'react';
+import { Platform, View, StyleSheet, Dimensions } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { AppProvider } from './src/context/AppContext';
+import { AuthProvider } from './src/context/AuthContext';
+import { ThemeProvider, useTheme } from './src/theme/ThemeContext';
+import AppNavigator from './src/navigation/AppNavigator';
+
+// On web, the app is designed for mobile viewports. On desktop we center the
+// content inside a phone-shaped frame so the UI still feels intentional.
+const isWeb = Platform.OS === 'web';
+
+export default function App() {
+  return (
+    <ThemeProvider>
+      <AppRoot />
+    </ThemeProvider>
+  );
+}
+
+function AppRoot() {
+  const { isDark, colors } = useTheme();
+
+  useEffect(() => {
+    if (!isWeb || typeof document === 'undefined') return;
+    document.title = 'Career Trial — Try Before You Choose';
+    document.body.style.margin = '0';
+    document.body.style.background = isDark
+      ? 'linear-gradient(135deg, #0A0B18 0%, #1A1B2E 100%)'
+      : 'linear-gradient(135deg, #EEF1F8 0%, #F8F9FD 100%)';
+    document.body.style.overflow = 'auto';
+    document.documentElement.style.height = '100%';
+    document.body.style.height = '100%';
+    document.body.style.fontFamily =
+      '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+  }, [isDark]);
+
+  const inner = (
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <SafeAreaProvider>
+        <AuthProvider>
+          <AppProvider>
+            <StatusBar style={isDark ? 'light' : 'dark'} />
+            <AppNavigator />
+          </AppProvider>
+        </AuthProvider>
+      </SafeAreaProvider>
+    </GestureHandlerRootView>
+  );
+
+  if (!isWeb) return inner;
+  return <WebFrame isDark={isDark} colors={colors}>{inner}</WebFrame>;
+}
+
+/**
+ * On desktop widths, wrap the mobile app in a centered phone frame so it looks
+ * intentional. On narrow screens (< 640px) it fills the viewport.
+ */
+function WebFrame({ children, isDark, colors }) {
+  const [dims, setDims] = React.useState(() => Dimensions.get('window'));
+
+  useEffect(() => {
+    const sub = Dimensions.addEventListener('change', ({ window }) => setDims(window));
+    return () => sub?.remove?.();
+  }, []);
+
+  const compact = dims.width < 640;
+  const shortScreen = dims.height < 500;
+
+  if (compact) {
+    return <View style={styles.fullBleed}>{children}</View>;
+  }
+
+  return (
+    <View style={styles.desktopWrap}>
+      {!shortScreen && (
+        <View style={styles.brandBlock}>
+          <div style={{ ...brandStyle.title, background: isDark ? brandStyle.title.background : 'linear-gradient(135deg, #6C63FF 0%, #4A42DB 100%)' }}>Career Trial</div>
+          <div style={{ ...brandStyle.tagline, color: isDark ? '#A8A8C8' : '#4B5563' }}>
+            Try before you choose. Live a real workday as 50 different professionals.
+          </div>
+          <div style={{ ...brandStyle.small, color: isDark ? '#6B6B8A' : '#9CA3AF' }}>Tip: resize your browser or open on mobile for the full experience.</div>
+        </View>
+      )}
+      <View style={[styles.frame, shortScreen && { height: Math.min(820, dims.height * 0.92) }, { backgroundColor: colors.background, borderColor: isDark ? '#0A0B18' : '#E5E7EB' }]}>
+        <View style={[styles.notch, { backgroundColor: isDark ? '#0A0B18' : '#E5E7EB' }]} />
+        <View style={styles.screen}>{children}</View>
+      </View>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  fullBleed: { flex: 1, minHeight: '100vh', width: '100%' },
+  desktopWrap: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 60,
+    minHeight: '100vh',
+    width: '100%',
+    padding: 20,
+  },
+  brandBlock: { maxWidth: 380 },
+  frame: {
+    width: 400,
+    height: 820,
+    maxHeight: '92vh',
+    borderRadius: 44,
+    borderWidth: 8,
+    overflow: 'hidden',
+    boxShadow: '0 30px 60px -20px rgba(108, 99, 255, 0.25), 0 0 0 1px rgba(0,0,0,0.05)',
+    position: 'relative',
+  },
+  notch: {
+    position: 'absolute',
+    top: 6,
+    left: '50%',
+    marginLeft: -60,
+    width: 120,
+    height: 22,
+    borderBottomLeftRadius: 14,
+    borderBottomRightRadius: 14,
+    zIndex: 10,
+  },
+  screen: { flex: 1, borderRadius: 36, overflow: 'hidden' },
+});
+
+const brandStyle = {
+  title: {
+    fontSize: 48,
+    fontWeight: 800,
+    color: '#fff',
+    background: 'linear-gradient(135deg, #6C63FF 0%, #00D9FF 100%)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    lineHeight: 1.1,
+    marginBottom: 16,
+  },
+  tagline: {
+    fontSize: 18,
+    lineHeight: 1.5,
+    marginBottom: 24,
+  },
+  small: { fontSize: 13 },
+};

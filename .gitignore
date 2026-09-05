@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+
+# Environment
+.env
+.env.local
+.env.*.local
+.env.production
+
+# Logs
+*.log
+
+# Editor / IDE
+.vscode/
+.idea/
+.qoder/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build outputs
+web-build/
+dist/
+build/
+*.tsbuildinfo
+
+# Expo
+.expo/
+
+# Test/debug screenshots (not part of the app)
+blank_page_screenshot.png
+console_screenshot.png
+page_screenshot.png
+test_*.png
+
+# Career data build artifacts
+build_careers.py
+careers_pdf.txt
